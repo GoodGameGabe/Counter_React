@@ -1,26 +1,30 @@
 import React from "react";
-
+import PropTypes from "prop-types";
 //include images into your bundle
-import rigoImage from "../../img/rigo-baby.jpg";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 //create your first component
-export class Home extends React.Component {
-	render() {
-		return (
-			<div className="text-center mt-5">
-				<h1>Hello Rigo!</h1>
-				<p>
-					<img src={rigoImage} />
-				</p>
-				<a href="#" className="btn btn-success">
-					If you see this green button... bootstrap is working
-				</a>
-				<p>
-					Made by{" "}
-					<a href="http://www.4geeksacademy.com">4Geeks Academy</a>,
-					with love!
-				</p>
+
+let BigCounter = props => {
+	console.log(props);
+	return (
+		<div className="BigCounter">
+			<div className="calender">
+				<FontAwesomeIcon icon="clock" />
 			</div>
-		);
-	}
-}
+			<div className="four">{props.digitFour % 10}</div>
+			<div className="three">{props.digitThree % 10}</div>
+			<div className="two">{props.digitTwo % 10}</div>
+			<div className="one">{parseInt(props.digitOne) % 10}</div>
+		</div>
+	);
+};
+
+BigCounter.propTypes = {
+	digitFour: PropTypes.number,
+	digitThree: PropTypes.number,
+	digitTwo: PropTypes.number,
+	digitOne: PropTypes.number
+};
+
+export default BigCounter;
